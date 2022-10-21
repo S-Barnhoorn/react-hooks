@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: linear-gradient(to right, var(--bordeaux), var(--blood));
+}
+
+.navbar__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-basis: 1400px;
+    margin: 10px 50px;
+}
+
+.navbar__primary {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 25em;
+    margin-right: 25px;
+}
+
+.navbar__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    flex-basis: 100%;
+}
+
+.navbar__link{
+    color: var(--bright);
+    text-decoration: none;
+}
