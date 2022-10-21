@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './FormContainer.module.css'
 
-const FormContainer = () => {
+const FormContainer = ({children}) => {
     return (
-        <form>
-
+        <form className={styles['form']}>
+            <div className={styles['form__container']}>
+                {children}
+            </div>
         </form>
     );
 };

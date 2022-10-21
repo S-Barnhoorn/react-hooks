@@ -7,6 +7,7 @@ import Form from "./pages/Form/Form";
 import Reduce from "./pages/Reduce/Reduce";
 import Ref from "./pages/Ref/Ref";
 import NavBar from "./components/NavBar/NavBar";
+import Video from "./components/Video/Video";
 
 function App() {
   return (
