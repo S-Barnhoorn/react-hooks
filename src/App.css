@@ -1,3 +1,5 @@
+
+
 :root{
   --dark: #220901;
   --bordeaux: #621708;
@@ -15,6 +17,20 @@
 html{
   background: var(--dark);
   color: var(--bright);
+  z-index: 0;
 }
 
+.page-container{
+  background-image: url(./assets/wave-haikei2.svg);
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+/*.test{*/
+/*  clip-path: circle(175.6% at 50% 375%);*/
+
+/*  background: linear-gradient(var(--bordeaux), var(--blood));*/
+/*  z-index: -10;*/
+/*}*/
 

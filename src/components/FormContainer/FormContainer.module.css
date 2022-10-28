@@ -2,18 +2,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
+    z-index: 1;
 }
 
 .form__container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
-    width: 600px;
-    flex-basis: 500px;
-    padding: 20px;
+    flex-basis: 700px;
+    padding: 2em;
+    gap: 2em;
 
-    background: linear-gradient(var(--bordeaux), var(--blood))
+    border: 2px outset var(--bright);
+    border-radius: 10px;
+
+    background: linear-gradient(var(--bordeaux), var(--blood));
+    z-index: 1;
 }

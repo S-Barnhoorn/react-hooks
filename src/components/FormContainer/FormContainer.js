@@ -3,11 +3,11 @@ import styles from './FormContainer.module.css'
 
 const FormContainer = ({children}) => {
     return (
-        <form className={styles['form']}>
+        // <form className={styles['form']}>
             <div className={styles['form__container']}>
                 {children}
             </div>
-        </form>
+
     );
 };
 

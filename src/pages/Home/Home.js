@@ -5,24 +5,24 @@ import Input from "../../components/Input/Input";
 
 const Home = () => {
     return (
-            <FormContainer>
-               <p>Username:</p>
-                <Input
-                    type='text'
-                    name='username'
-                    id='username__id'
-                    className={styles['input__item']}
-                    placeholder='Username...'
-                />
-                <p>Email:</p>
-                <Input
-                    type='email'
-                    name='email'
-                    id='email__id'
-                    className={styles['input__item']}
-                    placeholder='Email...'
-                />
-            </FormContainer>
+        <FormContainer>
+            <p>Username:</p>
+            <Input
+                type='text'
+                name='username'
+                id='username__id'
+                className='input__item'
+                placeholder='Username...'
+            />
+            <p>Email:</p>
+            <Input
+                type='email'
+                name='email'
+                id='email__id'
+                className='input__item'
+                placeholder='Email...'
+            />
+        </FormContainer>
     );
 };
 

@@ -1,0 +1,18 @@
+.name__container{
+    display: flex;
+    gap: 1em;
+}
+
+.input__container{
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.input__left{
+    flex-basis: 350px;
+}
+
+.input__right{
+    flex-basis: 350px;
+}

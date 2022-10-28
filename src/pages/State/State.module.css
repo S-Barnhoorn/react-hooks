@@ -1,0 +1,54 @@
+.name__container{
+    display: flex;
+    gap: 1em;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    z-index: 1;
+}
+
+.input__container{
+    display: flex;
+    gap: 2em;
+}
+
+.input__left{
+    flex-basis: 350px;
+}
+
+.input__right{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    flex-basis: 350px;
+}
+
+.select__item{
+    width: 100%;
+    font-size: 1.05em;
+    margin-bottom: 1em;
+    color: var(--bright);
+    background-color: var(--dark);
+}
+
+.radio__container{
+    display: flex;
+    gap: 2em;
+}
+
+#textarea__id{
+    background-color: var(--dark);
+    outline: transparent;
+}
+
+
+#textarea__id::placeholder{
+    color: var(--bright);
+}
+
+#textarea__id:focus::placeholder{
+    color: transparent;
+}
