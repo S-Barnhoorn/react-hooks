@@ -1,13 +1,17 @@
 .input__item{
-    margin-bottom: 1em;
+    margin: 10px 0;
+    padding: 3px;
     width: 100%;
-    font-size: 1.05em;
+    font-size: 1.1em;
     outline: transparent;
+    color: var(--bright);
     background-color: var(--dark);
+    border-radius: 5px;
+    border: 2px inset var(--fire);
 }
 
 .input__item::placeholder{
-    color: var(--bright);
+    color: var(--fire);
 }
 
 .input__item:focus::placeholder{
@@ -52,7 +56,7 @@
     background-color: var(--dark);
     border: 1px solid var(--bright);
     box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-    padding: 9px;
+    padding: 7px;
     border-radius: 3px;
     display: inline-block;
     position: relative;
@@ -70,9 +74,9 @@
 
 .check__item:checked:after {
     content: '\2714';
-    font-size: 14px;
+    font-size: 13px;
     position: absolute;
-    top: 0px;
-    left: 3px;
+    top: -2px;
+    left: 2px;
     color: var(--bright);
 }

@@ -3,21 +3,50 @@ import styles from './State.module.css'
 import FormContainer from "../../components/FormContainer/FormContainer";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
+import {BiError} from "react-icons/bi";
+
 
 const State = () => {
     const [disabled, setDisabled] = useState(true);
     const [state, setState] = useState({
-        firstname: '',
-        lastname: '',
+        error: false,
+        passwordError: false,
+
     });
 
-    function handleSubmit(e){
-        e.preventDefault()
+    function handleSubmit(e) {
         console.log(state)
+        const isEmpty = Object.values(state).every(x => x !== null || x !== '');
+        console.log(isEmpty)
+        e.preventDefault()
+        setState(prevState => {
+            return{
+                ...prevState,
+                error: false,
+                passwordError: false,
+            }
+        })
+
+        if(state.password !== state.passwordRepeat){
+            setState(prevState => {
+                return{
+                    ...prevState,
+                    passwordError: true
+                }
+            })
+        } if(state.firstname === '' || state.lastname === ''){
+            setState(prevState => {
+                return{
+                    ...prevState,
+                    error: true
+                }
+            })
+        }
     }
 
-    function handleChange(e){
-        if(e.target.value === 'Accept'){
+    function handleChange(e) {
+        console.log(e.target.value)
+        if (e.target.value === 'Accept') {
             setDisabled(!disabled)
         }
         setState(prevState => {
@@ -28,13 +57,11 @@ const State = () => {
         })
     }
 
-    console.log(disabled)
-
     return (
         <div className={styles['state__container']}>
             <form onSubmit={handleSubmit} className={styles['form']}>
                 <FormContainer>
-                    <h1>State formulier</h1>
+                    <h1>State Form</h1>
                     <div className={styles['input__container']}>
                         <div className={styles['input__left']}>
                             <div className={styles['name__container']}>
@@ -46,6 +73,7 @@ const State = () => {
                                     placeholder='First name...'
                                     onChange={handleChange}
                                 />
+
                                 <Input
                                     type='text'
                                     name='lastname'
@@ -55,6 +83,7 @@ const State = () => {
                                     onChange={handleChange}
                                 />
                             </div>
+                            {(state.firstname === '' || state.lastname === '')&& <span className={styles['error__message']}>Voor en achternaam zijn verplicht</span>}
                             <Input
                                 type='email'
                                 name='email'
@@ -63,6 +92,8 @@ const State = () => {
                                 placeholder='Email...'
                                 onChange={handleChange}
                             />
+                            {/*{state.email === '' && <span className={styles['error__message']}>email is verplicht</span>}*/}
+
                             <Input
                                 type='number'
                                 name='phonenumber'
@@ -85,11 +116,12 @@ const State = () => {
                                 className={styles["select__item"]}
                                 onChange={handleChange}
                             >
-                                <option name="NL">Netherlands</option>
-                                <option name="BE">Belgium</option>
-                                <option name="DE">Germany</option>
-                                <option name="FR">France</option>
-                                <option name="GB">United Kingdom</option>
+                                <option disabled selected value> -- select an option -- </option>
+                                <option name="NL" className={styles['special__option']}>Netherlands</option>
+                                <option name="BE" className={styles['special__option']}>Belgium</option>
+                                <option name="DE" className={styles['special__option']}>Germany</option>
+                                <option name="FR" className={styles['special__option']}>France</option>
+                                <option name="GB" className={styles['special__option']}>United Kingdom</option>
                             </select>
                             <Input
                                 type='password'
@@ -101,12 +133,16 @@ const State = () => {
                             />
                             <Input
                                 type='password'
-                                name='password-repeat'
+                                name='passwordRepeat'
                                 id='repeat-password__id'
                                 className='input__item'
                                 placeholder='Repeat password...'
                                 onChange={handleChange}
                             />
+                            {/*Live update variant:*/}
+                            {state.password !== state.passwordRepeat && <span className={styles['error__message']}><BiError/> Wachtwoorden komen niet overeen</span>}
+                            {/*Na Submit variant:*/}
+                            {state.passwordError && <span className={styles['error__message']}><BiError/> Wachtwoorden komen niet overeen</span>}
                         </div>
                         <div className={styles["input__right"]}>
                             <p>Gotta love this form right?</p>
@@ -135,7 +171,7 @@ const State = () => {
                                     type='radio'
                                     name='radio'
                                     value='No'
-                                    id='awnser-b__id'
+                                    id='awnser-c__id'
                                     className='radio'
                                     onChange={handleChange}
                                 >
@@ -145,8 +181,8 @@ const State = () => {
                             <textarea
                                 name="textarea"
                                 id={styles["textarea__id"]}
-                                cols="40"
-                                rows="13"
+                                cols="32"
+                                rows="15"
                                 placeholder='Comments...'
                                 onChange={handleChange}
                             />
