@@ -8,35 +8,36 @@ import {BiError} from "react-icons/bi";
 
 const State = () => {
     const [disabled, setDisabled] = useState(true);
+    const [result, setResult] = useState(false)
     const [state, setState] = useState({
         error: false,
         passwordError: false,
-
     });
 
     function handleSubmit(e) {
-        console.log(state)
-        const isEmpty = Object.values(state).every(x => x !== null || x !== '');
-        console.log(isEmpty)
+        if (Object.keys(state).length > 3) {
+            setResult(true)
+        }
         e.preventDefault()
         setState(prevState => {
-            return{
+            return {
                 ...prevState,
                 error: false,
                 passwordError: false,
             }
         })
 
-        if(state.password !== state.passwordRepeat){
+        if (state.password !== state.passwordRepeat) {
             setState(prevState => {
-                return{
+                return {
                     ...prevState,
                     passwordError: true
                 }
             })
-        } if(state.firstname === '' || state.lastname === ''){
+        }
+        if (state.firstname === '' || state.lastname === '') {
             setState(prevState => {
-                return{
+                return {
                     ...prevState,
                     error: true
                 }
@@ -83,7 +84,8 @@ const State = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            {(state.firstname === '' || state.lastname === '')&& <span className={styles['error__message']}>Voor en achternaam zijn verplicht</span>}
+                            {(state.firstname === '' || state.lastname === '') &&
+                            <span className={styles['error__message']}>Voor en achternaam zijn verplicht</span>}
                             <Input
                                 type='email'
                                 name='email'
@@ -116,7 +118,7 @@ const State = () => {
                                 className={styles["select__item"]}
                                 onChange={handleChange}
                             >
-                                <option disabled selected value> -- select an option -- </option>
+                                <option disabled selected value> -- select an option --</option>
                                 <option name="NL" className={styles['special__option']}>Netherlands</option>
                                 <option name="BE" className={styles['special__option']}>Belgium</option>
                                 <option name="DE" className={styles['special__option']}>Germany</option>
@@ -140,12 +142,13 @@ const State = () => {
                                 onChange={handleChange}
                             />
                             {/*Live update variant:*/}
-                            {state.password !== state.passwordRepeat && <span className={styles['error__message']}><BiError/> Wachtwoorden komen niet overeen</span>}
+                            {state.password !== state.passwordRepeat && <span
+                                className={styles['error__message']}><BiError/> Wachtwoorden komen niet overeen</span>}
                             {/*Na Submit variant:*/}
                             {state.passwordError && <span className={styles['error__message']}><BiError/> Wachtwoorden komen niet overeen</span>}
                         </div>
                         <div className={styles["input__right"]}>
-                            <p>Gotta love this form right?</p>
+                            <h4>Gotta love this form right?</h4>
                             <div className={styles["radio__container"]}>
                                 <Input
                                     type='radio'
@@ -206,6 +209,33 @@ const State = () => {
                         Sent
                     </Button>
                 </FormContainer>
+                {result &&
+                <div className={styles['result__container']}>
+                    <h1>Result Form</h1>
+                    <div className={styles['result__split']}>
+                        <article className={styles['result__articles']}>
+                            <h4>Voornaam: </h4>
+                            <span>{state.firstname}</span>
+                            <h4>Achternaam: </h4>
+                            <span>{state.lastname}</span>
+                            <h4>Telefoon nummer: </h4>
+                            <span>{state.phonenumber}</span>
+                            <h4>Stad: </h4>
+                            <span>{state.city}</span>
+                            <h4>Land: </h4>
+                            <span>{state.country}</span>
+                        </article>
+                        <article className={styles['result__articles']}>
+                            <h4>Likey? </h4>
+                            <span>{state.radio}</span>
+                            <h4>Comments: </h4>
+                            <span>{state.textarea}</span>
+                            <h4>Akkoord? </h4>
+                            <span>{state.conditions}</span>
+                        </article>
+                    </div>
+                </div>
+                }
             </form>
         </div>
     );
