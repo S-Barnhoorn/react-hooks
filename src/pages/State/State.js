@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styles from './State.module.css'
 import FormContainer from "../../components/FormContainer/FormContainer";
-import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import {BiError} from "react-icons/bi";
 
@@ -12,9 +11,11 @@ const State = () => {
     const [state, setState] = useState({
         error: false,
         passwordError: false,
+        firstname: ''
     });
 
     function handleSubmit(e) {
+        console.log(state)
         if (Object.keys(state).length > 3) {
             setResult(true)
         }
@@ -66,49 +67,48 @@ const State = () => {
                     <div className={styles['input__container']}>
                         <div className={styles['input__left']}>
                             <div className={styles['name__container']}>
-                                <Input
+                                <input
                                     type='text'
                                     name='firstname'
                                     id='firstname__id'
-                                    className='input__item'
+                                    className={styles['input__item']}
                                     placeholder='First name...'
                                     onChange={handleChange}
                                 />
 
-                                <Input
+                                <input
                                     type='text'
                                     name='lastname'
                                     id='lastname__id'
-                                    className='input__item'
+                                    className={styles['input__item']}
                                     placeholder='Last name...'
                                     onChange={handleChange}
                                 />
                             </div>
-                            {(state.firstname === '' || state.lastname === '') &&
-                            <span className={styles['error__message']}>Voor en achternaam zijn verplicht</span>}
-                            <Input
+                            {/*{(state.firstname === '' || state.lastname === '') &&*/}
+                            {/*<span className={styles['error__message']}>Voor en achternaam zijn verplicht</span>}*/}
+                            <input
                                 type='email'
                                 name='email'
                                 id='email__id'
-                                className='input__item'
+                                className={styles['input__item']}
                                 placeholder='Email...'
                                 onChange={handleChange}
                             />
                             {/*{state.email === '' && <span className={styles['error__message']}>email is verplicht</span>}*/}
-
-                            <Input
+                            <input
                                 type='number'
                                 name='phonenumber'
                                 id='phone-number__id'
-                                className='input__item'
+                                className={styles['input__item']}
                                 placeholder='Phonenumber'
                                 onChange={handleChange}
                             />
-                            <Input
+                            <input
                                 type='text'
                                 name='city'
                                 id='city__id'
-                                className='input__item'
+                                className={styles['input__item']}
                                 placeholder='City...'
                                 onChange={handleChange}
                             />
@@ -125,19 +125,19 @@ const State = () => {
                                 <option name="FR" className={styles['special__option']}>France</option>
                                 <option name="GB" className={styles['special__option']}>United Kingdom</option>
                             </select>
-                            <Input
+                            <input
                                 type='password'
                                 name='password'
                                 id='repeat__id'
-                                className='input__item'
+                                className={styles['input__item']}
                                 placeholder='Password...'
                                 onChange={handleChange}
                             />
-                            <Input
+                            <input
                                 type='password'
                                 name='passwordRepeat'
                                 id='repeat-password__id'
-                                className='input__item'
+                                className={styles['input__item']}
                                 placeholder='Repeat password...'
                                 onChange={handleChange}
                             />
@@ -150,36 +150,39 @@ const State = () => {
                         <div className={styles["input__right"]}>
                             <h4>Gotta love this form right?</h4>
                             <div className={styles["radio__container"]}>
-                                <Input
-                                    type='radio'
-                                    name='radio'
-                                    value='Yes'
-                                    id='awnser-a__id'
-                                    className='radio'
-                                    onChange={handleChange}
-                                >
-                                    <span>Yes </span>
-                                </Input>
-                                <Input
-                                    type='radio'
-                                    name='radio'
-                                    value='Medium'
-                                    id='awnser-b__id'
-                                    className='radio'
-                                    onChange={handleChange}
-                                >
+                                <label htmlFor="awnser-a__id">
+                                    <input
+                                        type='radio'
+                                        name='radio'
+                                        value='Yes'
+                                        id='awnser-a__id'
+                                        className={styles['radio']}
+                                        onChange={handleChange}
+                                    />
+                                    <span>Yes</span>
+                                </label>
+                                <label htmlFor="awnser-b__id">
+                                    <input
+                                        type='radio'
+                                        name='radio'
+                                        value='Medium'
+                                        id='awnser-b__id'
+                                        className={styles['radio']}
+                                        onChange={handleChange}
+                                    />
                                     <span>Medium </span>
-                                </Input>
-                                <Input
-                                    type='radio'
-                                    name='radio'
-                                    value='No'
-                                    id='awnser-c__id'
-                                    className='radio'
-                                    onChange={handleChange}
-                                >
+                                </label>
+                                <label htmlFor="awnser-c__id">
+                                    <input
+                                        type='radio'
+                                        name='radio'
+                                        value='No'
+                                        id='awnser-c__id'
+                                        className={styles['radio']}
+                                        onChange={handleChange}
+                                    />
                                     <span>No </span>
-                                </Input>
+                                </label>
                             </div>
                             <textarea
                                 name="textarea"
@@ -191,16 +194,17 @@ const State = () => {
                             />
                         </div>
                     </div>
-                    <Input
-                        type='checkbox'
-                        name='conditions'
-                        value="Accept"
-                        id='conditions__id'
-                        className='check__item'
-                        onChange={handleChange}
-                    >
+                    <label htmlFor="conditions__id">
                         <span>I accept the Terms & Conditions: </span>
-                    </Input>
+                        <input
+                            type='checkbox'
+                            name='conditions'
+                            value="Accept"
+                            className={styles['check__item']}
+                            id='conditions__id'
+                            onChange={handleChange}
+                        />
+                    </label>
                     <Button
                         type='submit'
                         className='button'
@@ -209,7 +213,7 @@ const State = () => {
                         Sent
                     </Button>
                 </FormContainer>
-                {result &&
+                {result && state &&
                 <div className={styles['result__container']}>
                     <h1>Result Form</h1>
                     <div className={styles['result__split']}>

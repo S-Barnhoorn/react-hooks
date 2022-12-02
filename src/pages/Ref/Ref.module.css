@@ -1,11 +1,24 @@
+.state__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4em;
+}
+
 .name__container{
     display: flex;
     gap: 1em;
 }
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    z-index: 1;
+}
 
 .input__container{
     display: flex;
-    justify-content: center;
     gap: 2em;
 }
 
@@ -14,5 +27,100 @@
 }
 
 .input__right{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
     flex-basis: 350px;
 }
+
+.select__item{
+    width: 100%;
+    font-size: 1.05em;
+    margin: 10px 0;
+    padding: 3px;
+    color: var(--fire);
+    background-color: var(--dark);
+    border: 2px inset var(--fire);
+}
+
+.special__option{
+    color: var(--bright);
+}
+
+.radio__container{
+    display: flex;
+    gap: 2em;
+}
+
+#textarea__id{
+    background-color: var(--dark);
+    outline: transparent;
+    color: var(--bright);
+    font-size: 1.2em;
+}
+
+
+#textarea__id::placeholder{
+    color: var(--fire);
+    font-size: 1.3em;
+}
+
+#textarea__id:focus::placeholder{
+    color: transparent;
+}
+
+.error__message{
+    color: var(--dark);
+    font-weight: bold;
+    font-size: 11px;
+    background-color: var(--bright);
+    padding: 2px;
+
+    margin: 0;
+
+    border-radius: 9px;
+    border: 3px solid var(--dark);
+}
+
+.result__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-height: 450px;
+    flex-basis: 500px;
+    padding: 2em;
+    margin: 2em;
+    gap: 2em;
+
+    border: 2px outset var(--fire);
+    border-radius: 10px;
+
+    background: linear-gradient(var(--bordeaux), var(--blood));
+    z-index: 1;
+}
+
+.result__split{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2em;
+    overflow: hidden;
+
+    padding: 30px;
+    width: 350px;
+    height: 400px;
+    background-color: var(--dark);
+
+    color: var(--fire);
+    border-radius: 10px;
+}
+
+.result__split > article > h4{
+    color: var(--bright);
+}
+
+.result__articles{
+    padding: 5px;
+}
+
