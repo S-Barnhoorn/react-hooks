@@ -5,12 +5,14 @@ import FormContainer from "../../components/FormContainer/FormContainer";
 import {BiError} from "react-icons/bi";
 import {useForm} from 'react-hook-form'
 import Button from "../../components/Button/Button";
+// import image from "../../assets/Untitled.jpeg";
 
 const Form = () => {
+    console.log('Render Form')
 
     const {register, handleSubmit, formState: {isDirty} } = useForm();
     const [result, setResult] = useState(false)
-    const [ data, setData] = useState({})
+    const [data, setData] = useState({})
 
     function onSubmit(data) {
         setResult(true)
@@ -21,6 +23,7 @@ const Form = () => {
     return (
         <div className={styles['state__container']}>
             <form onSubmit={handleSubmit(onSubmit)} className={styles['form']}>
+                {/*<img src={image} alt='kleur' className={styles['image']}/>*/}
                 <FormContainer>
                     <h1>Form Form</h1>
                     <div className={styles['input__container']}>
@@ -184,6 +187,7 @@ const Form = () => {
                     </div>
                 </div>
                 }
+                {/*<img src={image} alt='kleur' className={styles['image']}/>*/}
             </form>
         </div>
     );

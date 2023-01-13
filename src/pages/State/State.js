@@ -3,9 +3,12 @@ import styles from './State.module.css'
 import FormContainer from "../../components/FormContainer/FormContainer";
 import Button from "../../components/Button/Button";
 import {BiError} from "react-icons/bi";
+// import image from '../../assets/Untitled.jpeg'
 
 
 const State = () => {
+    console.log('Render State')
+
     const [disabled, setDisabled] = useState(true);
     const [result, setResult] = useState(false)
     const [state, setState] = useState({
@@ -15,7 +18,6 @@ const State = () => {
     });
 
     function handleSubmit(e) {
-        console.log(state)
         if (Object.keys(state).length > 3) {
             setResult(true)
         }
@@ -47,7 +49,6 @@ const State = () => {
     }
 
     function handleChange(e) {
-        console.log(e.target.value)
         if (e.target.value === 'Accept') {
             setDisabled(!disabled)
         }
@@ -62,6 +63,7 @@ const State = () => {
     return (
         <div className={styles['state__container']}>
             <form onSubmit={handleSubmit} className={styles['form']}>
+                {/*<img src={image} alt='kleur' className={styles['image']}/>*/}
                 <FormContainer>
                     <h1>State Form</h1>
                     <div className={styles['input__container']}>
@@ -75,7 +77,6 @@ const State = () => {
                                     placeholder='First name...'
                                     onChange={handleChange}
                                 />
-
                                 <input
                                     type='text'
                                     name='lastname'
@@ -240,6 +241,7 @@ const State = () => {
                     </div>
                 </div>
                 }
+                {/*<img src={image} alt='kleur' className={styles['image']}/>*/}
             </form>
         </div>
     );

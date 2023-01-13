@@ -1,5 +1,4 @@
 
-
 :root{
   --dark: #220901;
   --bordeaux: #621708;
@@ -25,6 +24,8 @@ html{
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
+  /*background-color: var(--bordeaux);*/
+  /*z-index: 1;*/
 }
 
 /*.test{*/
